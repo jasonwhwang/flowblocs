@@ -1,0 +1,49 @@
+.schedule {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  padding-top: 1.5rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.s-date {
+  text-align: center;
+  font-size: 1rem;
+}
+.s-add {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.5rem;
+  color: var(--blue);
+  font-size: 2rem;
+}
+.s-list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+.s-timelist {
+  width: 1.5rem;
+  font-size: 1.25rem;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+}
+.s-time {
+  height: 180px;
+  border-top: 1px solid var(--gray);
+  box-sizing: border-box;
+  text-align: center;
+}
+.s-bloclist {
+  flex: 1;
+}
+.s-bloc {
+  background-color: var(--lightgray);
+  border-radius: 10px;
+  border-bottom: 2px solid white;
+  box-sizing: border-box;
+  padding: 3px 3px 3px 8px;
+  position: absolute;
+  width: calc(100% - 4rem);
+}

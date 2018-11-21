@@ -1,0 +1,64 @@
+.milestones {
+  height: 100vh;
+  background-color: var(--graybackground);
+}
+
+.m-milestoneHeight {
+  height: calc(100vh - 8rem);
+  box-sizing: border-box;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.m-arrow {
+  height: 4rem;
+  font-size: 1.5rem;
+}
+.m-more {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+  right: 3%;
+  top: 2%;
+}
+.m-moreButton {
+  width: 100%;
+  height: 100%;
+}
+.m-moreicon {
+  font-size: 2rem;
+}
+
+
+.m-lock {
+  text-align: center;
+  font-size: 3rem;
+}
+.m-textHeading {
+  height: 17rem;
+}
+.m-centertitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-top: 5rem;
+}
+.m-centerheading {
+  text-align: center;
+  margin-top: 1rem;
+}
+.m-age {
+  font-size: 1.25rem;
+  margin-left: 0.5rem;
+}
+.m-progressbar {
+  height: 10px;
+  width: 250px;
+  border-radius: 50px;
+  border: 1px solid var(--dark);
+  margin: 0 auto;
+}

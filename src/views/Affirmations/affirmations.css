@@ -1,0 +1,30 @@
+.affirmations {
+  padding: 2.5rem 2rem 2rem 2rem;
+  font-size: 1.5rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.affirmations-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.a-block {
+  display: inline-block;
+}
+.a-blockn {
+  opacity: 0.25;
+}
+.a-blockw {
+  max-width: calc(100% - 3rem);
+  vertical-align: top;
+}
+.a-entry {
+  margin-bottom: 1rem;
+}
+.a-filler {
+  flex: 1;
+  min-height: 50px;
+}
