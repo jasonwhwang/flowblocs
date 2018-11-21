@@ -10,7 +10,7 @@ import Time from './Time/time';
 class Home extends Component {
   render() {
     return (
-      <SwipeableViews index={0} enableMouseEvents={true}>
+      <SwipeableViews index={2} enableMouseEvents={true}>
         <Milestones />
         <Affirmations />
         <Time />
