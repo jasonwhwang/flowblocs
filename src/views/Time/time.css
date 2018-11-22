@@ -17,7 +17,7 @@
   height: 25%;
   width: 100%;
   position: absolute;
-  bottom: 10vh;
+  bottom: 10%;
 }
 .t-bottomSection {
   height: 100%;
@@ -33,6 +33,9 @@
   background-color: white;
   border: 1px solid var(--lightgray);
   box-shadow: 0 3px 3px 2pt rgb(241, 241, 241);
+}
+.t-bottomSectionContainer>div {
+  height: 100%;
 }
 
 .t-item {

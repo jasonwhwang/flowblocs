@@ -3,7 +3,7 @@ import SwipeableViews from 'react-swipeable-views';
 
 const styles = {
   slideContainer: {
-    height: '25vh',
+    height: '100%',
   }
 };
 

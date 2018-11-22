@@ -14,8 +14,15 @@ class Home extends Component {
   }
 
   initializeHeight() {
-    document.getElementsByTagName("html")[0].style.height = window.outerHeight+"px";
-    console.log(document.getElementsByTagName("html")[0].style.height);
+    // document.getElementsByTagName("html")[0].style.height = window.outerHeight+"px";
+    // console.log(document.getElementsByTagName("html")[0].style.height);
+    window.addEventListener("resize", function() {
+      if(document.activeElement.tagName === "input") {
+         window.setTimeout(function() {
+            document.activeElement.scrollIntoViewIfNeeded();
+         },0);
+      }
+   })
   }
 
   render() {

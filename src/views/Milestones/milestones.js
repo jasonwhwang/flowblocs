@@ -6,7 +6,7 @@ import Milestone from './milestone';
 
 const styles = {
   slideContainer: {
-    height: 'calc(100vh - 8rem)'
+    height: '100%'
   }
 };
 
@@ -21,10 +21,10 @@ class Milestones extends Component {
           <button className="m-moreButton"><i className="ion-md-more m-moreicon"></i></button>
         </div>
 
-        <SwipeableViews containerStyle={styles.slideContainer} index={0} enableMouseEvents={true} axis="y-reverse">
+        <div className="m-swipeWrapper"><SwipeableViews containerStyle={styles.slideContainer} index={0} enableMouseEvents={true} axis="y-reverse">
           <Milestone />
           <Milestone />
-        </SwipeableViews>
+        </SwipeableViews></div>
 
         <div className="m-arrow box-flexRowCenter">
           <i className="ion-ios-arrow-down"></i>
