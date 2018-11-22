@@ -4,7 +4,7 @@
 }
 
 .m-swipeWrapper {
-  height: calc(100% - 8rem);
+  height: calc(100% - 6rem);
 }
 .m-swipeWrapper>div {
   height: 100%;
@@ -12,11 +12,12 @@
 .m-milestoneHeight {
   height: 100%;
   box-sizing: border-box;
-  padding: 1rem 1rem 0 1rem;
+  padding: 4vh 1rem 0 1rem;
+  overflow: hidden;
 }
 
 .m-arrow {
-  height: 4rem;
+  height: 3rem;
   font-size: 1.5rem;
 }
 .m-more {
@@ -42,24 +43,29 @@
 
 .m-lock {
   text-align: center;
-  font-size: 3rem;
+  font-size: 7vh;
 }
 .m-textHeading {
-  height: 17rem;
+  margin-top: 10vh;
 }
 .m-centertitle {
   text-align: center;
-  font-size: 2rem;
+  font-size: 5vh;
   font-weight: 600;
-  padding-top: 5rem;
+
 }
 .m-centerheading {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2vh;
 }
 .m-age {
-  font-size: 1.25rem;
+  font-size: 4vh;
   margin-left: 0.5rem;
+}
+.m-progressbarwrapper {
+  height: 175px;
+  width: 175px;
+  margin: 23vh auto 0 auto;
 }
 .m-progressbar {
   height: 10px;
