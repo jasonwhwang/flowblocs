@@ -1,5 +1,5 @@
 .time {
-  height: 100vh;
+  height: 100%;
   background-color: var(--graybackground);
 }
 
@@ -14,7 +14,7 @@
 }
 
 .t-bottom {
-  height: 25vh;
+  height: 25%;
   width: 100%;
   position: absolute;
   bottom: 10vh;

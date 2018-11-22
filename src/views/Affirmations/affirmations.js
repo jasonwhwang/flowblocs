@@ -27,6 +27,7 @@ class Affirmations extends Component {
           </div>
 
           <div className="a-filler"></div>
+          
           <div>
             <input></input>
           </div>

@@ -16,7 +16,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   font-size: 20px;
@@ -36,14 +36,9 @@ html, body {
   height: 100%;
   width: 100%;
 }
-.root-app {
+#root>div, .react-swipeable-view-container, .react-swipeable-view-container>div {
   height: 100%;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
-}
-
-.react-swipeable-view-container>div {
-  height: 100%;
 }
 
 input {

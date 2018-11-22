@@ -14,7 +14,7 @@ class Home extends Component {
   }
 
   initializeHeight() {
-    document.getElementsByTagName("html")[0].style.height = window.innerHeight+"px";
+    document.getElementsByTagName("html")[0].style.height = window.outerHeight+"px";
     console.log(document.getElementsByTagName("html")[0].style.height);
   }
 
