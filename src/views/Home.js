@@ -10,20 +10,16 @@ import Time from './Time/time';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.initializeVh = this.initializeVh.bind(this);
+    this.initializeHeight = this.initializeHeight.bind(this);
   }
 
-  initializeVh() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    window.addEventListener('resize', () => {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    });
+  initializeHeight() {
+    document.getElementsByTagName("html")[0].style.height = window.innerHeight+"px";
+    console.log(document.getElementsByTagName("html")[0].style.height);
   }
 
   render() {
-    this.initializeVh();
+    this.initializeHeight();
     return (
       <SwipeableViews index={2} enableMouseEvents={true}>
         <Milestones />
