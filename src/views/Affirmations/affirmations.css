@@ -1,21 +1,22 @@
 .affirmations {
   padding: 2.5rem 2rem 2rem 2rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   height: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 .affirmations-page {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.a-block {
-  display: inline-block;
+  height: 100%;
 }
 .a-blockn {
   opacity: 0.25;
+  margin-right: 5px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .a-blockw {
   max-width: calc(100% - 3rem);
@@ -23,8 +24,10 @@
 }
 .a-entry {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
 }
 .a-filler {
   flex: 1;
-  min-height: 50px;
+  min-height: 200px;
 }

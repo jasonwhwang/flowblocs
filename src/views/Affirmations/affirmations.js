@@ -1,75 +1,65 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import AHandler from './aHandler';
+
 import './affirmations.css';
 
-const autoExpand = (textarea) => {
-  var limitRows = 5;
-  var messageLastScrollHeight = textarea.scrollHeight;
+const mapStateToProps = state => ({
+  list: state.affirmations.list
+});
 
-  textarea.oninput = function () {
-    var rows = parseInt(textarea.getAttribute("rows"));
-    // If we don't decrease the amount of rows, the scrollHeight would show the scrollHeight for all the rows
-    // even if there is no text.
-    textarea.setAttribute("rows", "1");
-
-    if (rows < limitRows && textarea.scrollHeight > messageLastScrollHeight) {
-      rows++;
-    } else if (rows > 1 && textarea.scrollHeight < messageLastScrollHeight) {
-      rows--;
-    }
-
-    messageLastScrollHeight = textarea.scrollHeight;
-    textarea.setAttribute("rows", rows);
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onLogin: (ext_id, accessToken) =>
+    dispatch({ type: 'LOGIN', ext_id, accessToken })
+});
 
 class Affirmations extends Component {
   constructor(props) {
     super(props);
-    this.inputExpand = this.inputExpand.bind(this);
+    this.state = { list: this.props.list };
+    this.handleEvent = this.handleEvent.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
-  inputExpand() {
-    document.addEventListener('input', function (event) {
-      if (event.target.tagName.toLowerCase() !== 'textarea') return;
-      autoExpand(event.target);
-    }, false);
+  handleEvent(event, index) {
+    let newList = this.state.list;
+    newList[index] = event.target.value;
+    this.setState({ list: newList });
+  }
+
+  addItem() {
+    this.setState({ list: [...this.state.list, ''] });
+  }
+
+  removeItem() {
+    const filteredList = this.state.list.filter(name => {
+      return name !== "";
+    });
+    this.setState({ list: filteredList });
   }
 
   render() {
-    this.inputExpand();
     return (
       <div className="affirmations">
         <div className="affirmations-page">
-          <div className="a-entry">
-            <div className="a-block a-blockn">1.</div> <div className="a-block a-blockw">I am happy</div>
-          </div>
-          <div className="a-entry">
-            <div className="a-block a-blockn">2.</div> <div className="a-block a-blockw">I will enjoy everyday of my life</div>
-          </div>
-          <div className="a-entry">
-            <div className="a-block a-blockn">3.</div> <div className="a-block a-blockw">I win everyday</div>
-          </div>
-          <div className="a-entry">
-            <div className="a-block a-blockn">4.</div> <div className="a-block a-blockw">I take massive action</div>
-          </div>
-          <div className="a-entry">
-            <div className="a-block a-blockn">5.</div> <div className="a-block a-blockw">I will do whatever it takes</div>
-          </div>
+          {
+            this.state.list ?
+              this.state.list.map((item, index) => (
+                <div className="a-entry" key={'item'+index}>
+                  <div className="a-block a-blockn">{index+1}.</div><AHandler update={this.handleEvent} remove={this.removeItem} index={index} item={item} />
+                </div>
+              ))
+              :
+              null
+          }
 
-          <div>
-            <textarea rows="1"></textarea>
-          </div>
-
-          <div className="a-filler"></div>
-
-          <div>
-            <textarea rows="1"></textarea>
-          </div>
-
+          <div className="a-filler" onClick={this.addItem}></div>
         </div>
       </div>
     );
   }
 }
 
-export default Affirmations;
+export default connect(mapStateToProps, mapDispatchToProps)(Affirmations);

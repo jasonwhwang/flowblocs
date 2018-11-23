@@ -4,9 +4,10 @@ import { createStore, combineReducers } from 'redux'; // applyMiddleware
 // import storage from 'redux-persist/lib/storage';
 
 import common from './common';
+import affirmations from './affirmations';
 
 const rootReducer = combineReducers({
-  common
+  common, affirmations
 });
 
 // const persistConfig = {
