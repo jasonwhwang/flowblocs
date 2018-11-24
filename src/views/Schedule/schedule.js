@@ -1,45 +1,85 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './schedule.css';
 
+const mapStateToProps = state => ({
+  schedule: state.schedule.schedule
+});
+
+const mapDispatchToProps = dispatch => ({
+  onLogin: (ext_id, accessToken) =>
+    dispatch({ type: 'LOGIN', ext_id, accessToken })
+});
+
 class Schedule extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hours: [], events: [] };
+    this.timeLoop = this.timeLoop.bind(this);
+    this.eventLoop = this.eventLoop.bind(this);
+    this.initializeView = this.initializeView.bind(this);
+  }
+
+  timeLoop() {
+    let newHours = []
+    for(let i = this.props.schedule[0].startHour; i <= this.props.schedule[this.props.schedule.length-1].endHour; i++) {
+      if(i <= 12)
+        newHours.push(<div className="s-time" key={"hour"+i}>{i}</div>);
+      else
+        newHours.push(<div className="s-time" key={"hour"+i}>{i-12}</div>);
+    }
+    return newHours;
+  }
+
+  eventLoop() {
+    let newEvents = [];
+    let startTime = this.props.schedule[0].startHour;
+    let hourDiff = 0, minDiff = 0, eventHeight = 0, eventOffest = 0;
+    for(let i = 0; i < this.props.schedule.length; i++) {
+      hourDiff = this.props.schedule[i].endHour - this.props.schedule[i].startHour;
+      minDiff = hourDiff*60 + this.props.schedule[i].endMin - this.props.schedule[i].startMin; 
+      eventHeight = minDiff*3; // 3px per minute
+      hourDiff = this.props.schedule[i].startHour - startTime;
+      minDiff = hourDiff*60 + this.props.schedule[i].startMin;
+      eventOffest = minDiff*3;
+      newEvents.push(<div className="s-bloc" style={{height: eventHeight+"px", marginTop: eventOffest+"px"}} key={'events'+i}>{this.props.schedule[i].title}</div>);
+    }
+    return newEvents;
+  }
+
+  initializeView() {
+    this.setState({ hours: this.timeLoop(), events: this.eventLoop() });
+  }
+
+  componentWillMount() {
+    this.initializeView();
+  }
+
   render() {
-    var val = 45; // 3px per minute, 3*15minutes = 45px height;
-    var val2 = 0;
-    var val3 = 120;
-    var val4 = 280
-    var val5 = 350;
     return (
       <div className="schedule">
-        <div className="s-date"><div>Monday, October 1</div></div>
+        <div className="s-date box-flexRowCenter"><div>Monday, October 1</div></div>
         <div className="s-add"><i className="ion-ios-add"></i></div>
         <div className="s-list">
           <div className="s-timelist">
-            <div className="s-time">9</div>
-            <div className="s-time">10</div>
-            <div className="s-time">11</div>
-            <div className="s-time">12</div>
-            <div className="s-time">1</div>
-            <div className="s-time">2</div>
-            <div className="s-time">3</div>
-            <div className="s-time">4</div>
-            <div className="s-time">5</div>
-            <div className="s-time">6</div>
-            <div className="s-time">7</div>
-            <div className="s-time">8</div>
-            <div className="s-time">9</div>
-            <div className="s-time">10</div>
-            <div className="s-time">11</div>
+            {
+              this.state.hours.map(hour => {
+                return hour;
+              })
+            }
           </div>
           <div className="s-bloclist">
-            <div className="s-bloc" style={{height: val+"px", marginTop: val2+"px"}}>Wake Up</div>
-            <div className="s-bloc" style={{height: val+"px", marginTop: val3+"px"}}>Breakfast</div>
-            <div className="s-bloc" style={{height: val+"px", marginTop: val4+"px"}}>Class</div>
-            <div className="s-bloc" style={{height: val+"px", marginTop: val5+"px"}}>Skip</div>
+            {
+              this.state.events.map(event => {
+                return event;
+              })
+            }
           </div>
         </div>
+        <div className="s-spacer"></div>
       </div>
     );
   }
 }
 
-export default Schedule;
+export default connect(mapStateToProps, mapDispatchToProps)(Schedule);

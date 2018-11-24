@@ -5,9 +5,10 @@ import { createStore, combineReducers } from 'redux'; // applyMiddleware
 
 import common from './common';
 import affirmations from './affirmations';
+import schedule from './schedule';
 
 const rootReducer = combineReducers({
-  common, affirmations
+  common, affirmations, schedule
 });
 
 // const persistConfig = {
