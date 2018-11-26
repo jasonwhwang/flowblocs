@@ -19,7 +19,6 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  font-size: 20px;
   color: var(--black);
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
@@ -52,22 +51,27 @@ input {
   border-radius: 20px;
   font-family: 'Lato', sans-serif;
   transition: 100ms all;
+  font-size: 1rem;
 }
 textarea {
   width: 100%;
   box-sizing: border-box;
-  padding: 5px;
+  padding: 7px 5px 0 5px;
   border: none;
   overflow: hidden;
   font-family: 'Lato', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   resize: none;
 }
 textarea:focus {
   outline: none;
   box-shadow: 0 2px 2px -2px var(--mediumgray);
 }
-
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 input:focus{
   outline: none;
   box-shadow: 0 0 0 3pt rgb(241, 241, 241);
@@ -141,6 +145,12 @@ button, [type="button"], [type="reset"], [type="submit"] {
   }
 }
 
+.box-textCenter {
+  text-align: center;
+}
+.box-textBold {
+  font-weight: 700;
+}
 .box-blueText {
   color: var(--blue);
 }
@@ -151,13 +161,19 @@ button, [type="button"], [type="reset"], [type="submit"] {
   background-color: var(--blue);
 }
 .box-blue:hover {
-  background-color: #0059ff;
+  opacity: 0.8;
 }
 .box-gray {
   background-color: var(--gray);
 }
 .box-gray:hover {
-  background-color: var(--darkgray);
+  opacity: 0.8;
+}
+.box-red {
+  background-color: var(--red);
+}
+.box-red:hover {
+  opacity: 0.8;
 }
 
 .box-heading1 {
@@ -198,6 +214,12 @@ button, [type="button"], [type="reset"], [type="submit"] {
 .box-flexRowCenter {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.box-flexColCenter {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
