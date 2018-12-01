@@ -62,7 +62,7 @@ class Schedule extends Component {
     if (event.target === event.currentTarget) {
       if (this.state.add === 0) {
         document.getElementById("schedule").style.overflow = "hidden";
-        if(typeof idx !== 'undefined')
+        if (typeof idx !== 'undefined')
           this.setState({ ...this.state, add: 1, currEvent: this.props.schedule[idx] });
         else
           this.setState({ ...this.state, add: 1 });
@@ -84,25 +84,27 @@ class Schedule extends Component {
         {
           this.state.add ? <ScheduleModal close={this.toggleModal} event={this.state.currEvent} /> : null
         }
-        <button className="s-date box-flexRowCenter"><div>Monday, October 1</div></button>
-        <button className="s-add box-flexRowCenter" onClick={this.toggleModal}><i className="ion-ios-add" onClick={this.toggleModal}></i></button>
-        <div className="s-list">
-          <div className="s-timelist">
-            {
-              this.state.hours.map(hour => {
-                return hour;
-              })
-            }
+        <div className="s-scheduleWrapper">
+          <button className="s-date box-flexRowCenter"><div>Monday, October 1</div></button>
+          <button className="s-add box-flexRowCenter" onClick={this.toggleModal}><i className="ion-ios-add" onClick={this.toggleModal}></i></button>
+          <div className="s-list">
+            <div className="s-timelist">
+              {
+                this.state.hours.map(hour => {
+                  return hour;
+                })
+              }
+            </div>
+            <div className="s-bloclist">
+              {
+                this.state.events.map(event => {
+                  return event;
+                })
+              }
+            </div>
           </div>
-          <div className="s-bloclist">
-            {
-              this.state.events.map(event => {
-                return event;
-              })
-            }
-          </div>
+          <div className="s-spacer"></div>
         </div>
-        <div className="s-spacer"></div>
       </div>
     );
   }

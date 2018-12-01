@@ -7,12 +7,29 @@ class ScheduleModal extends React.Component {
     super(props);
     this.state = { input: ['', '', '', '', '', '', ''], startT: 0, endT: 0, weekly: 0, notification: 0 }
     this.inputHandler = this.inputHandler.bind(this);
+    this.handleStartT = this.handleStartT.bind(this);
+    this.handleEndT = this.handleEndT.bind(this);
+    this.handleWeekly = this.handleWeekly.bind(this);
+    this.handleNotification = this.handleNotification.bind(this);
   }
 
   inputHandler(event, idx) {
     let newInput = this.state.input;
     newInput[idx] = event.target.value;
     this.setState({ ...this.state, input: newInput });
+  }
+
+  handleStartT() {
+    this.setState({ ...this.state, startT: !this.state.startT});
+  }
+  handleEndT() {
+    this.setState({ ...this.state, endT: !this.state.endT});
+  }
+  handleWeekly() {
+    this.setState({ ...this.state, weekly: !this.state.weekly });
+  }
+  handleNotification() {
+    this.setState({ ...this.state, notification: !this.state.notification });
   }
 
   componentWillMount() {
@@ -50,7 +67,7 @@ class ScheduleModal extends React.Component {
               <SModalHandler inputType={1} placeHolder={"number"} val={this.state.input[1]} idx={1} handler={this.inputHandler}/>
               <div className="s-colon">:</div>
               <SModalHandler inputType={1} placeHolder={"number"} val={this.state.input[2]} idx={2} handler={this.inputHandler}/>
-              <button className="s-smallWidth box-textBold">AM</button>
+              <button className="s-smallWidth box-textBold" onClick={this.handleStartT}>{this.state.startT ? 'PM' : 'AM'}</button>
             </div>
 
             <div className="box-flexRow box-marginTop s-spaceBetween">
@@ -58,7 +75,7 @@ class ScheduleModal extends React.Component {
               <SModalHandler inputType={1} placeHolder={"number"} val={this.state.input[3]} idx={3} handler={this.inputHandler}/>
               <div className="s-colon">:</div>
               <SModalHandler inputType={1} placeHolder={"number"} val={this.state.input[4]} idx={4} handler={this.inputHandler}/>
-              <button className="s-smallWidth box-textBold">AM</button>
+              <button className="s-smallWidth box-textBold" onClick={this.handleEndT}>{this.state.endT ? 'PM' : 'AM'}</button>
             </div>
 
             <SModalHandler inputType={0} placeHolder={"Location"} val={this.state.input[5]} idx={5} handler={this.inputHandler}/>
@@ -66,8 +83,19 @@ class ScheduleModal extends React.Component {
             <SModalHandler inputType={2} placeHolder={"Description"} val={this.state.input[6]} idx={6} handler={this.inputHandler}/>
 
             <div className="box-flexRow box-marginTop">
-              <button className="s-buttonSmall box-gray box-marginLeft"><i className="ion-ios-calendar"/></button>
-              <button className="s-buttonSmall box-gray box-marginLeft"><i className="ion-ios-notifications"/></button>
+              {
+                this.state.weekly ? 
+                <button className="s-buttonSmall box-blue box-marginLeft" onClick={this.handleWeekly}><i className="ion-ios-calendar"/></button>
+                :
+                <button className="s-buttonSmall box-gray box-marginLeft" onClick={this.handleWeekly}><i className="ion-ios-calendar"/></button>
+              }
+              {
+                this.state.notification ? 
+                <button className="s-buttonSmall box-blue box-marginLeft" onClick={this.handleNotification}><i className="ion-ios-notifications"/></button>
+                :
+                <button className="s-buttonSmall box-gray box-marginLeft" onClick={this.handleNotification}><i className="ion-ios-notifications"/></button>
+              }
+
               <div className="box-spacer"></div>
               <button className="s-buttonSmall box-red box-marginRight"><i className="ion-ios-trash"/></button>
             </div>

@@ -24,12 +24,15 @@
 }
 .s-add {
   position: absolute;
-  top: 10px;
+  bottom: 15px;
   right: 12px;
   color: var(--blue);
   font-size: 2rem;
   height: 50px;
   width: 50px;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
 }
 .s-list {
   display: flex;
@@ -49,6 +52,7 @@
 }
 .s-bloclist {
   flex: 1;
+  position: relative;
 }
 .s-bloc {
   background-color: var(--lightgray);
@@ -57,7 +61,7 @@
   box-sizing: border-box;
   padding: 3px 3px 3px 8px;
   position: absolute;
-  width: calc(100% - 4rem);
+  width: calc(100% - 2rem);
 }
 .s-spacer {
   height: 50px;
